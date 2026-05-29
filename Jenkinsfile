@@ -9,7 +9,7 @@ pipeline {
 
         stage('Clone Code') {
             steps {
-                git 'git branch: 'dev', credentialsId: 'git_credentials', url: 'https://github.com/beauty-singh-code/End-to-End-DevOps-Project.git''
+                git 'git branch: 'dev', credentialsId: 'git_credentials', url: 'https://github.com/beauty-singh-code/k8s-practice-project.git''
             }
         }
 
