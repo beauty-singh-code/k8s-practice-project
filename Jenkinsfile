@@ -9,7 +9,10 @@ pipeline {
 
         stage('Clone Code') {
             steps {
-                git 'git branch: 'dev', credentialsId: 'git_credentials', url: 'https://github.com/beauty-singh-code/k8s-practice-project.git''
+
+                git branch: 'dev',
+                    credentialsId: 'git_credentials',
+                    url: 'https://github.com/beauty-singh-code/k8s-practice-project.git'
             }
         }
 
@@ -27,6 +30,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
+
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerhub',
                     usernameVariable: 'USER',
@@ -34,16 +38,19 @@ pipeline {
                 )]) {
 
                     sh 'echo $PASS | docker login -u $USER --password-stdin'
+
                     sh 'docker push $DOCKER_IMAGE'
                 }
             }
         }
 
         //stage('Deploy to Kubernetes') {
-           // steps {
-                //sh 'kubectl apply -f k8s/deployment.yaml'
-               // sh 'kubectl apply -f k8s/service.yaml'
-            //}
-       // }
+            //steps {
+
+               // sh 'kubectl apply -f k8s/deployment.yaml'
+
+                //sh 'kubectl apply -f k8s/service.yaml'
+           // }
+        //}
     }
 }
