@@ -22,6 +22,13 @@ pipeline {
             }
         }
 
+        stage('Docker Test') {
+    steps {
+        sh 'docker version'
+        sh 'docker ps'
+    }
+}
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $DOCKER_IMAGE .'
