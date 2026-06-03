@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "beauty7718/first_project:0.0.1"
+        DOCKER_IMAGE = "beauty7718/first_project:0.0.2"
         KUBECONFIG = '/root/.kube/config-jenkins'
     }
 

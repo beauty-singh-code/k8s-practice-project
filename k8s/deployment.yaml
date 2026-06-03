@@ -20,7 +20,7 @@ spec:
       containers:
       - name: devops-demo
 
-        image: beauty7718/first_project:0.0.1
+        image: beauty7718/first_project:0.0.2
 
         ports:
         - containerPort: 9090
