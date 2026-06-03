@@ -5,6 +5,10 @@ pipeline {
         DOCKER_IMAGE = "beauty7718/first_project:0.0.1"
     }
 
+    environment {
+        KUBECONFIG = '/root/.kube/config-jenkins'
+    }
+
     stages {
 
         stage('Clone Code') {
@@ -54,7 +58,9 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
 
-               sh 'kubectl apply -f k8s/deployment.yaml'
+                sh 'kubectl get nodes'
+                
+                sh 'kubectl apply -f k8s/deployment.yaml'
 
                 sh 'kubectl apply -f k8s/service.yaml'
             }
